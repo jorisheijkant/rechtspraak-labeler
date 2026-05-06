@@ -10,7 +10,7 @@ Deze code is geschreven in het kader van een AI-cursus voor journalisten van het
 ## Benodigdheden 
 De code is geschreven in Python, gebruik het liefst een moderne versie. Omdat we zowel scrapen als LLM's aanroepen, komen er relatief veel libraries bij kijken, zie `requirements.txt`. Installeer deze het liefst in een _virtual environment_ als `venv` of `conda`. 
 
-Voor het scrapen dien je [Playwright](https://playwright.dev/python/) te installeren, inclusief een van de _headless browsers_. 
+Voor het scrapen dien je [Selenium](https://selenium-python.readthedocs.io/) te installeren, inclusief een bijbehorende _webdriver_ (bijv. geckodriver voor Firefox). 
 
 ## Het opzetten van je scraper
 Met deze code kun je uitspraken op rechtspraak.nl binnenhalen en labelen. Hiervoor moet je de zoek-url hebben van de uitspraken waar je naar op zoek bent. Dat werkt vrij simpel. Zoek op de website naar je term/onderwerp, en kopieer de url daarvan. Maak ook een omschrijving van één of twee zinnen waarin je omschrijft waaraan de uitspraak precies moet voldoen om in de dataset terecht te komen. Die gebruiken we om eventuele niet-relevante resultaten van je zoekslag er alsnog uit te filteren. 

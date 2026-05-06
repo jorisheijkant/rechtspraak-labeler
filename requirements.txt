@@ -1,0 +1,6 @@
+selenium
+anthropic
+ollama
+pandas
+pydantic
+python-dotenv

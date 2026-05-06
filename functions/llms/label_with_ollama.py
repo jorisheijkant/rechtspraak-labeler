@@ -1,17 +1,14 @@
 import ollama
+from pydantic import BaseModel
 
-from functions.llms.uitspraak_schema import get_uitspraak_schema
+from functions.llms.get_uitspraak_schema import get_uitspraak_schema
 
-def label_with_ollama(prompt, pdf_content, model="llama3.2"):
+def label_with_ollama(prompt: str, content: str, uitspraak_class: type[BaseModel], model: str = "gemma4") -> BaseModel:
     response = ollama.chat(
         model=model,
-        messages=[
-            {
-                "role": "user",
-                "content": f"{prompt}\n\n{pdf_content}"
-            }
-        ],
-        format=get_uitspraak_schema()
+        messages=[{"role": "user", "content": f"{prompt}\n\n{content}"}],
+        format=get_uitspraak_schema(uitspraak_class)
     )
 
-    return response.message.content
+    raw = response['message']['content'] if isinstance(response, dict) else response.message.content
+    return uitspraak_class.model_validate_json(raw)

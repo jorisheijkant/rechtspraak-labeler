@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 from functions.llms.get_uitspraak_schema import get_uitspraak_schema
 
-def label_with_ollama(prompt: str, content: str, uitspraak_class: type[BaseModel], model: str = "gemma4") -> BaseModel:
+def label_with_ollama(prompt: str, content: str, uitspraak_class: type[BaseModel], model: str = "gemma4:e4b") -> BaseModel:
     response = ollama.chat(
         model=model,
         messages=[{"role": "user", "content": f"{prompt}\n\n{content}"}],
